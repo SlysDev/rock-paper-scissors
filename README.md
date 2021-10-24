@@ -1,2 +1,1 @@
-# libr-landing-page
-Created with CodeSandbox
+The Rock Paper Scissors Project from TOP, created with Javascript.
