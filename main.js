@@ -1,13 +1,19 @@
 // Selectors
-
+let display = document.querySelector('#info-display');
+let container = document.querySelector('#main-container');
 let rockButton = document.querySelector('#rockbtn');
 let paperButton = document.querySelector('#paperbtn');
 let scissorsButton = document.querySelector('#scissorsbtn');
-let display = document.querySelector('#info-display');
-
+let scoreDisplay = document.querySelector('#score-display');
+let replayContainer = document.querySelector('#replay-container');
+let replayNo = document.createElement('button');
+let replayYes = document.createElement('button');
+body = document.querySelector('body');
 // Variables
 
 let playerValue; // puts the player's input into a variable
+
+let score = 0;
 
 let computerValue; // puts the computer's input into a variable
 
@@ -55,37 +61,66 @@ function gameStatus() {
 
 function gameRun() {
   
+  // Creating elements
+  body.appendChild(container);
+  
   // player(); // runs the player function
   computerPlay(); // runs the computer function
   
   
   let gameOutcome = gameStatus(); // puts the game status into a variable
 
-
-  display.textContent = 'rock';
-  display.textContent = 'paper';
-  display.textContent = 'scissor';
-  display.textContent = 'SHOOT';
   display.textContent = gameOutcome; // game dialogue
   if (gameOutcome == 'win') {
-    display.textContent = `You win with ${playerValue}!`;
-    // replayGame(); // runs the game again
+    score++;
+    setTimeout(() => {
+      display.textContent = `You win a point with ${playerValue}!`;
+    }, 1000);
+    
+    
   } else if (gameOutcome == 'tie') {
-    display.textContent = `The game is tied at ${computerValue}!`;
-    // replayGame(); // ...
+    setTimeout(() => {
+      display.textContent = `The game is tied at ${computerValue}!`;
+    }, 1000);
+    
+    
   } else {
-    display.textContent = `Oops... the computer won with ${computerValue}.`;
-    // replayGame(); // ...
+    score--;
+    setTimeout(() => {
+      display.textContent = `Oops... the computer won a point with ${computerValue}.`;
+    }, 1000);
+    
+    
   }
+  scoreDisplay.textContent = 'Score: ' + score;
+  
+  
+  if (score <= -5) {
+    setTimeout(() => {
+      display.textContent = 'You lost to the computer!';
+    }, 1000);
+    replayGame();
+  } else if (score >= 5) {
+    setTimeout(() => {
+      display.textContent = 'You WON - Congratulations!';
+    }, 1000);
+    replayGame();
+  }
+  
+  
 }
 
 function replayGame() {
-  let replay = prompt('Would you like to play again? (y/n)'); // prompts the player to play again
-  if (replay == 'y') {
-    gameRun(); // runs the game again
-  } else {
-    display.textContent = 'Thank you for playing!'; // end of game cycle dialogue
-  }
+  body.removeChild(container);
+  setTimeout(() => {
+    display.textContent = 'Would you like to play again?';
+  }, 1000); // prompts the player to play again
+  
+  replayYes.textContent = 'Yes';
+  
+  replayNo.textContent = 'No';
+  replayContainer.appendChild(replayYes);
+  replayContainer.appendChild(replayNo);
 }
 
 
@@ -107,6 +142,22 @@ scissorsButton.addEventListener('click', function() {
   gameRun();
 });
 
+replayYes.addEventListener('click', function() {
+  score = 0;
+  body.removeChild(replayContainer);
+  body.appendChild(container);
+  display.textContent = '';
+});
+
+replayNo.addEventListener('click', function() {
+  score = null;
+  
+  display.textContent = 'OK...';
+  setTimeout(() => {
+    display.textContent = 'Thanks for playing!';
+  }, 1000);
+  
+})
+
 
 // Running the Game
-// gameRun();
