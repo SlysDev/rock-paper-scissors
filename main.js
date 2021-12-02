@@ -3,7 +3,7 @@
 let rockButton = document.querySelector('#rockbtn');
 let paperButton = document.querySelector('#paperbtn');
 let scissorsButton = document.querySelector('#scissorsbtn');
-
+let display = document.querySelector('#info-display');
 
 // Variables
 
@@ -14,7 +14,7 @@ let computerValue; // puts the computer's input into a variable
 // Functions
 
 // function player() {
-//   console.log('playing...')
+//   display.textContent = 'playing...')
 //   playerValue = prompt('Please type "rock", "paper", or "scissor"');
 //   return playerValue; // returns 'rock', 'paper', or 'scissor' depending on the player's input
 // }
@@ -62,20 +62,20 @@ function gameRun() {
   let gameOutcome = gameStatus(); // puts the game status into a variable
 
 
-  console.log('rock');
-  console.log('paper');
-  console.log('scissor');
-  console.log('SHOOT');
-  console.log(gameOutcome); // game dialogue
+  display.textContent = 'rock';
+  display.textContent = 'paper';
+  display.textContent = 'scissor';
+  display.textContent = 'SHOOT';
+  display.textContent = gameOutcome; // game dialogue
   if (gameOutcome == 'win') {
-    console.log(`You win with ${playerValue}!`);
-    replayGame(); // runs the game again
+    display.textContent = `You win with ${playerValue}!`;
+    // replayGame(); // runs the game again
   } else if (gameOutcome == 'tie') {
-    console.log(`The game is tied at ${computerValue}!`);
-    replayGame(); // ...
+    display.textContent = `The game is tied at ${computerValue}!`;
+    // replayGame(); // ...
   } else {
-    console.log(`Oops... the computer won with ${computerValue}.`);
-    replayGame(); // ...
+    display.textContent = `Oops... the computer won with ${computerValue}.`;
+    // replayGame(); // ...
   }
 }
 
@@ -84,7 +84,7 @@ function replayGame() {
   if (replay == 'y') {
     gameRun(); // runs the game again
   } else {
-    console.log('Thank you for playing!'); // end of game cycle dialogue
+    display.textContent = 'Thank you for playing!'; // end of game cycle dialogue
   }
 }
 
@@ -101,10 +101,12 @@ paperButton.addEventListener('click', function() {
   gameRun();
 });
 
+
 scissorsButton.addEventListener('click', function() {
   playerValue = 'scissor';
   gameRun();
 });
+
 
 // Running the Game
 // gameRun();
