@@ -1,20 +1,23 @@
+// Selectors
+
+let rockButton = document.querySelector('#rockbtn');
+let paperButton = document.querySelector('#paperbtn');
+let scissorsButton = document.querySelector('#scissorsbtn');
+
+
+// Variables
+
 let playerValue; // puts the player's input into a variable
 
 let computerValue; // puts the computer's input into a variable
 
-// Variables
-
-let param = document.getElementById('param'); // irrelevant code
-  
-
-
 // Functions
 
-function player() {
-  console.log('playing...')
-  playerValue = prompt('Please type "rock", "paper", or "scissor"');
-  return playerValue; // returns 'rock', 'paper', or 'scissor' depending on the player's input
-}
+// function player() {
+//   console.log('playing...')
+//   playerValue = prompt('Please type "rock", "paper", or "scissor"');
+//   return playerValue; // returns 'rock', 'paper', or 'scissor' depending on the player's input
+// }
 
 function computerPlay() {
   let computerNum;
@@ -52,7 +55,7 @@ function gameStatus() {
 
 function gameRun() {
   
-  player(); // runs the player function
+  // player(); // runs the player function
   computerPlay(); // runs the computer function
   
   
@@ -85,4 +88,23 @@ function replayGame() {
   }
 }
 
-gameRun(); // runs the game
+
+// Event Listeners
+
+rockButton.addEventListener('click', function() {
+  playerValue = 'rock';
+  gameRun();
+});
+
+paperButton.addEventListener('click', function() {
+  playerValue = 'paper';
+  gameRun();
+});
+
+scissorsButton.addEventListener('click', function() {
+  playerValue = 'scissor';
+  gameRun();
+});
+
+// Running the Game
+// gameRun();
