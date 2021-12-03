@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    color: white;
+    font-size: 18px;
+    transition: .5s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button {
+    padding: 2.5%;
+    font-size: 4rem;
+    border: 2px solid rgba(255, 255, 255, 0.445);
+    border-radius: 20px;
+    fill: none;
+    background: none;
+    transition: .5s ease;
+}
+
+button:hover {
+    transition: .5s ease;
+    padding: 5%;
+    border: 2px solid white;
+}
+
+#main-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+#score-display, #info-display {
+    font-size: 28px;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+#content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

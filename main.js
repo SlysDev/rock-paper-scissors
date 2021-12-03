@@ -8,7 +8,8 @@ let scoreDisplay = document.querySelector('#score-display');
 let replayContainer = document.querySelector('#replay-container');
 let replayNo = document.createElement('button');
 let replayYes = document.createElement('button');
-body = document.querySelector('body');
+let content = document.querySelector('#content')
+let body = document.querySelector('body')
 // Variables
 
 let playerValue; // puts the player's input into a variable
@@ -62,7 +63,7 @@ function gameStatus() {
 function gameRun() {
   
   // Creating elements
-  body.appendChild(container);
+  content.appendChild(container);
   
   // player(); // runs the player function
   computerPlay(); // runs the computer function
@@ -72,6 +73,10 @@ function gameRun() {
 
   display.textContent = gameOutcome; // game dialogue
   if (gameOutcome == 'win') {
+    body.style.backgroundColor = 'green';
+    setTimeout(() => {
+      body.style.backgroundColor = 'black';
+    }, 1000);
     score++;
     setTimeout(() => {
       display.textContent = `You win a point with ${playerValue}!`;
@@ -79,12 +84,20 @@ function gameRun() {
     
     
   } else if (gameOutcome == 'tie') {
+    body.style.backgroundColor = 'gray';
+    setTimeout(() => {
+      body.style.backgroundColor = 'black';
+    }, 1000);
     setTimeout(() => {
       display.textContent = `The game is tied at ${computerValue}!`;
     }, 1000);
     
     
   } else {
+    body.style.backgroundColor = 'red';
+    setTimeout(() => {
+      body.style.backgroundColor = 'black';
+    }, 1000);
     score--;
     setTimeout(() => {
       display.textContent = `Oops... the computer won a point with ${computerValue}.`;
